@@ -11,7 +11,7 @@ namespace IncentivoAhorros
 {
     class EPM
     {
-        private List<Cliente> clientes;
+        public List<Cliente> clientes;
 
         public EPM()
         {
@@ -152,9 +152,9 @@ namespace IncentivoAhorros
             Console.WriteLine("El porcentaje de ahorro para el Estrato 6 es :" + sum_estrato6 * 100 / suma_total);
 
         }
-        public float Contar_Clientes_Cobro_Adicional()
+        public int Contar_Clientes_Cobro_Adicional()
         {
-            float Contador_Irresponsables = 0;
+            int Contador_Irresponsables = 0;
 
             for (int i = 0; i < clientes.Count(); i++)
             {

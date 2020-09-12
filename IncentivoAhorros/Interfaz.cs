@@ -10,8 +10,8 @@ namespace IncentivoAhorros
     {
         static void Main(string[] args)
         {
-            int cedula, estrato, meta_ahorro, consumo_actual, opcion;
-            float valor_a_pagar, valor_total_descuento;
+            int cedula, estrato, meta_ahorro, consumo_actual, contador_clientes, opcion;
+            float valor_a_pagar, valor_total_descuento, promedio;
             opcion =  0;
             EPM epm = new EPM();
 
@@ -62,20 +62,40 @@ namespace IncentivoAhorros
                         break;
 
                     case 3:
-                        Console.WriteLine(" El valor total que se le dio a los clientes por concepto de descuentos es: ");
-                        valor_total_descuento = epm.Calcular_concepto_descuento();
+                        promedio = epm.Calcular_promedio();
+                        Console.WriteLine("el promedio de consumo actual de energía de todos los clientes es: " + promedio);
                         break;
 
                     case 4:
+
+                        valor_total_descuento = epm.Calcular_concepto_descuento();
+                        Console.WriteLine(" El valor total que se le dio a los clientes por concepto de descuentos es: " 
+                            + valor_total_descuento);
                         break;
 
                     case 5:
+
+                        Console.WriteLine("los porcentajes por estratos son los siguientes");
+                        epm.Calcular_porcentaje_ahorros();
+
                         break;
 
                     case 6:
+
+                        contador_clientes = epm.Contar_Clientes_Cobro_Adicional();
+                        Console.WriteLine("El número de clientes que tuvieron cobro adicional es: " + contador_clientes);
+
                         break;
 
                     case 7:
+
+                        for (int i = 0; i < epm.clientes.Count(); i++)
+                        {
+                            Cliente cliente = epm.clientes[i];
+                            Console.WriteLine("cedula {0} \n estrato {1} \n meta de ahorro {2} \n consumo actual {3} \n\n\n ", 
+                                cliente.Cedula, cliente.Estrato, cliente.Meta_ahorro, cliente.Consumo_actual);
+                        }
+
                         break;
 
                     default:
