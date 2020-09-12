@@ -16,7 +16,7 @@ namespace IncentivoAhorros
         public EPM()
         {
             clientes = null;
-            
+
         }
 
         public void almcenar_clientes(int cedula, int estrato, int meta_ahorro, int consumo_actual)
@@ -31,7 +31,7 @@ namespace IncentivoAhorros
             float valor_a_pagar;
             valor_a_pagar = 0;
 
-            for (int i = 0; i<clientes.Count(); i++)
+            for (int i = 0; i < clientes.Count(); i++)
             {
                 if (clientes[i].Cedula == cedula)
                 {
@@ -78,14 +78,14 @@ namespace IncentivoAhorros
         }
 
 
-        public float Calcular_porcentaje_ahorros()
+        public void Calcular_porcentaje_ahorros()
         {
             int cont_estrato1, cont_estrato2, cont_estrato3, cont_estrato4, cont_estrato5, cont_estrato6, contador_total,
-                kilovatios, ahorro_dinero, sum_estrato1, sum_estrato2, sum_estrato3, sum_estrato4, sum_estrato5, sum_estrato6,suma_total;
+                kilovatios, ahorro_dinero, sum_estrato1, sum_estrato2, sum_estrato3, sum_estrato4, sum_estrato5, sum_estrato6, suma_total;
 
-            cont_estrato1 = cont_estrato2 = cont_estrato3 = cont_estrato4 = cont_estrato5 = cont_estrato6 = 
-                contador_total = kilovatios = ahorro_dinero = sum_estrato1 = sum_estrato2 = sum_estrato3 = sum_estrato4 = 
-                sum_estrato5 = sum_estrato6 =0;
+            cont_estrato1 = cont_estrato2 = cont_estrato3 = cont_estrato4 = cont_estrato5 = cont_estrato6 =
+                contador_total = kilovatios = ahorro_dinero = sum_estrato1 = sum_estrato2 = sum_estrato3 = sum_estrato4 =
+                sum_estrato5 = sum_estrato6 = 0;
 
             for (int i = 0; i < clientes.Count(); i++)
             {
@@ -95,7 +95,7 @@ namespace IncentivoAhorros
                 {
                     case 1:
                         cont_estrato1 += 1;
-                        if ((cliente.Meta_ahorro - cliente.Consumo_actual)*500 >= 0) 
+                        if ((cliente.Meta_ahorro - cliente.Consumo_actual) * 500 >= 0)
                         {
                             sum_estrato1 += (cliente.Meta_ahorro - cliente.Consumo_actual) * 500;
                         }
@@ -169,4 +169,6 @@ namespace IncentivoAhorros
             return Contador_Irresponsables;
 
         }
+
+    }
 }

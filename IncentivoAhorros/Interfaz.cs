@@ -10,7 +10,7 @@ namespace IncentivoAhorros
     {
         static void Main(string[] args)
         {
-            int cedula, estrato, meta_ahorro, consumo_actual, , opcion;
+            int cedula, estrato, meta_ahorro, consumo_actual, opcion;
             float valor_a_pagar, valor_total_descuento;
             opcion =  0;
             EPM epm = new EPM();
