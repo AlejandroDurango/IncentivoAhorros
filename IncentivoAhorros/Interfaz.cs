@@ -20,18 +20,20 @@ namespace IncentivoAhorros
             {
                 Console.WriteLine("Incetivo de Ahorros EPM");
                 Console.WriteLine("Seleccione una de las opciones");
+                
+
+                Console.WriteLine("1: Almacenar información de cliente \n " +
+                    "2: Calcular valor a pagar de un cliente \n " +
+                    "3: Calcular el promedio del consumo actual de energia \n " +
+                    "4: Calcular conceptos de descuentos \n " +
+                    "5: Mostrar porcentajes de ahorro por estrato \n " +
+                    "6: Contabilizar los clientes que tuvieron un cobro adicional \n " +
+                    "7: mostrar clientes \n " +
+                    "8: salir");
+
                 opcion = Convert.ToInt32(Console.ReadLine());
 
-                Console.WriteLine("presione 1: Almacenar información de cliente \n " +
-                    "presione 2: Calcular valor a pagar de un cliente \n " +
-                    "presione 3: Calcular el promedio del consumo actual de energia \n " +
-                    "presione 4: Calcular conceptos de descuentos \n " +
-                    "presione 5: Mostrar porcentajes de ahorro por estrato \n " +
-                    "presione 6: Contabilizar los clientes que tuvieron un cobro adicional \n " +
-                    "presione 7: mostrar clientes \n " +
-                    "presione 8: salir");
-
-                switch(opcion)
+                switch (opcion)
                 {
                     case 1:
                         Console.WriteLine("ingrese los siguientes datos");
@@ -49,6 +51,8 @@ namespace IncentivoAhorros
                         consumo_actual = Convert.ToInt32(Console.ReadLine());
 
                         epm.almcenar_clientes(cedula, estrato, meta_ahorro, consumo_actual);
+
+                        Console.WriteLine("Se agregó la información correctamente \n\n");
                         break;
 
                     case 2:

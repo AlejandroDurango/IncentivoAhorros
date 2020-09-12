@@ -15,7 +15,7 @@ namespace IncentivoAhorros
 
         public EPM()
         {
-            clientes = null;
+            clientes = new List<Cliente>();
 
         }
 
@@ -37,8 +37,9 @@ namespace IncentivoAhorros
                 {
                     Cliente cliente = clientes[i];
                     valor_parcial = cliente.Consumo_actual * 500;
-                    valor_incentivo = (cliente.Meta_ahorro - valor_parcial) * 500;
+                    valor_incentivo = (cliente.Meta_ahorro - cliente.Consumo_actual) * 500;
                     valor_a_pagar = valor_parcial - valor_incentivo;
+                    break;
                 }
             }
 
@@ -69,7 +70,7 @@ namespace IncentivoAhorros
 
                 if (cliente.Consumo_actual <= cliente.Meta_ahorro)
                 {
-                    valor_total_descuentos += (cliente.Meta_ahorro - cliente.Consumo_actual);
+                    valor_total_descuentos += (cliente.Meta_ahorro - cliente.Consumo_actual)*500;
                 }
             }
 
