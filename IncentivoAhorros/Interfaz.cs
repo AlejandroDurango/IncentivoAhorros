@@ -10,9 +10,11 @@ namespace IncentivoAhorros
     {
         static void Main(string[] args)
         {
-            int cedula, estrato, meta_ahorro, consumo_actual, valor_a_pagar, opcion;
-            opcion = 0;
+            int cedula, estrato, meta_ahorro, consumo_actual, , opcion;
+            float valor_a_pagar, valor_total_descuento;
+            opcion =  0;
             EPM epm = new EPM();
+
 
             while(opcion != 8)
             {
@@ -53,15 +55,15 @@ namespace IncentivoAhorros
                         Console.WriteLine("Ingrese la cedula del cliente que desea calcularle su valor a pagar");
                         cedula = Convert.ToInt32(Console.ReadLine());
 
-                        valor_a_pagar = (int)epm.Calcular_valor(cedula);
+                        valor_a_pagar = epm.Calcular_valor(cedula);
 
                         Console.WriteLine("el valor a pagar del cliente con cédula {0} es: {1}", cedula, valor_a_pagar);
 
                         break;
 
                     case 3:
-
-
+                        Console.WriteLine(" El valor total que se le dio a los clientes por concepto de descuentos es: ");
+                        valor_total_descuento = epm.Calcular_concepto_descuento();
                         break;
 
                     case 4:

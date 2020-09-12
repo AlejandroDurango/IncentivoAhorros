@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -24,7 +27,8 @@ namespace IncentivoAhorros
 
         public float Calcular_valor(int cedula)
         {
-            int valor_parcial, valor_incentivo, valor_a_pagar;
+            int valor_parcial, valor_incentivo;
+            float valor_a_pagar;
             valor_a_pagar = 0;
 
             for (int i = 0; i<clientes.Count(); i++)
@@ -63,7 +67,7 @@ namespace IncentivoAhorros
             {
                 Cliente cliente = clientes[i];
 
-                if (cliente.Consumo_actual < cliente.Meta_ahorro)
+                if (cliente.Consumo_actual <= cliente.Meta_ahorro)
                 {
                     valor_total_descuentos += (cliente.Meta_ahorro - cliente.Consumo_actual);
                 }
@@ -77,9 +81,7 @@ namespace IncentivoAhorros
         public float Calcular_porcentaje_ahorros()
         {
             int cont_estrato1, cont_estrato2, cont_estrato3, cont_estrato4, cont_estrato5, cont_estrato6, contador_total,
-                kilovatios, ahorro_dinero, sum_estrato1, sum_estrato2, sum_estrato3, sum_estrato4, sum_estrato5, sum_estrato6;
-
-            float porcentaje_ahorro_kw, porcentaje_ahorro_dinero;
+                kilovatios, ahorro_dinero, sum_estrato1, sum_estrato2, sum_estrato3, sum_estrato4, sum_estrato5, sum_estrato6,suma_total;
 
             cont_estrato1 = cont_estrato2 = cont_estrato3 = cont_estrato4 = cont_estrato5 = cont_estrato6 = 
                 contador_total = kilovatios = ahorro_dinero = sum_estrato1 = sum_estrato2 = sum_estrato3 = sum_estrato4 = 
@@ -96,7 +98,6 @@ namespace IncentivoAhorros
                         if ((cliente.Meta_ahorro - cliente.Consumo_actual)*500 >= 0) 
                         {
                             sum_estrato1 += (cliente.Meta_ahorro - cliente.Consumo_actual) * 500;
-                            sum_estrato1 += (cliente.Meta_ahorro - cliente.Consumo_actual)
                         }
                         break;
 
@@ -142,12 +143,30 @@ namespace IncentivoAhorros
 
                 }
             }
-        }
+            suma_total = sum_estrato1 + sum_estrato2 + sum_estrato3 + sum_estrato4 + sum_estrato5 + sum_estrato6;
+            Console.WriteLine("El porcentaje de ahorro para el Estrato 1 es :" + sum_estrato1 * 100 / suma_total);
+            Console.WriteLine("El porcentaje de ahorro para el Estrato 2 es :" + sum_estrato2 * 100 / suma_total);
+            Console.WriteLine("El porcentaje de ahorro para el Estrato 3 es :" + sum_estrato3 * 100 / suma_total);
+            Console.WriteLine("El porcentaje de ahorro para el Estrato 4 es :" + sum_estrato4 * 100 / suma_total);
+            Console.WriteLine("El porcentaje de ahorro para el Estrato 5 es :" + sum_estrato5 * 100 / suma_total);
+            Console.WriteLine("El porcentaje de ahorro para el Estrato 6 es :" + sum_estrato6 * 100 / suma_total);
 
-        private void comparar(Cliente cliente)
+        }
+        public float Contar_Clientes_Cobro_Adicional()
         {
-           
-        }
+            float Contador_Irresponsables = 0;
 
-    }
+            for (int i = 0; i < clientes.Count(); i++)
+            {
+                Cliente cliente = clientes[i];
+
+                if (cliente.Consumo_actual > cliente.Meta_ahorro)
+                {
+                    Contador_Irresponsables += 1;
+                }
+            }
+
+            return Contador_Irresponsables;
+
+        }
 }
