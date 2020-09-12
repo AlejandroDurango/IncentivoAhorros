@@ -83,7 +83,8 @@ namespace IncentivoAhorros
         public void Calcular_porcentaje_ahorros()
         {
             int cont_estrato1, cont_estrato2, cont_estrato3, cont_estrato4, cont_estrato5, cont_estrato6, contador_total,
-                kilovatios, ahorro_dinero, sum_estrato1, sum_estrato2, sum_estrato3, sum_estrato4, sum_estrato5, sum_estrato6, suma_total;
+                kilovatios, ahorro_dinero, sum_estrato1, sum_estrato2, sum_estrato3, sum_estrato4, 
+                sum_estrato5, sum_estrato6, suma_total;
 
             cont_estrato1 = cont_estrato2 = cont_estrato3 = cont_estrato4 = cont_estrato5 = cont_estrato6 =
                 contador_total = kilovatios = ahorro_dinero = sum_estrato1 = sum_estrato2 = sum_estrato3 = sum_estrato4 =
