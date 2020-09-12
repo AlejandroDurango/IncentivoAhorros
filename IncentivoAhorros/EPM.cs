@@ -39,11 +39,12 @@ namespace IncentivoAhorros
                     valor_parcial = cliente.Consumo_actual * 500;
                     valor_incentivo = (cliente.Meta_ahorro - cliente.Consumo_actual) * 500;
                     valor_a_pagar = valor_parcial - valor_incentivo;
-                    break;
                 }
             }
 
             return valor_a_pagar;
+
+
         }
 
         public float Calcular_promedio()

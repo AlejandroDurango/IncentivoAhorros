@@ -19,10 +19,11 @@ namespace IncentivoAhorros
             while(opcion != 8)
             {
                 Console.WriteLine("Incetivo de Ahorros EPM");
+                Console.WriteLine("----------------------------------------------------------");
                 Console.WriteLine("Seleccione una de las opciones");
                 
 
-                Console.WriteLine("1: Almacenar información de cliente \n " +
+                Console.WriteLine(" 1: Almacenar información de cliente \n " +
                     "2: Calcular valor a pagar de un cliente \n " +
                     "3: Calcular el promedio del consumo actual de energia \n " +
                     "4: Calcular conceptos de descuentos \n " +
@@ -30,6 +31,7 @@ namespace IncentivoAhorros
                     "6: Contabilizar los clientes que tuvieron un cobro adicional \n " +
                     "7: mostrar clientes \n " +
                     "8: salir");
+                Console.WriteLine("----------------------------------------------------------");
 
                 opcion = Convert.ToInt32(Console.ReadLine());
 
@@ -43,6 +45,11 @@ namespace IncentivoAhorros
 
                         Console.WriteLine("Estrato del cliente:");
                         estrato = Convert.ToInt32(Console.ReadLine());
+                        while(estrato<1 || estrato >6)
+                        {
+                            Console.WriteLine("dato incorrecto! Por favor ingrese un un estrato entre 1 y 6:  ");
+                            estrato = Convert.ToInt32(Console.ReadLine());
+                        }
 
                         Console.WriteLine("meta_ahorro del cliente");
                         meta_ahorro = Convert.ToInt32(Console.ReadLine());
@@ -61,33 +68,34 @@ namespace IncentivoAhorros
 
                         valor_a_pagar = epm.Calcular_valor(cedula);
 
-                        Console.WriteLine("el valor a pagar del cliente con cédula {0} es: {1}", cedula, valor_a_pagar);
+                        Console.WriteLine("el valor a pagar del cliente con cédula {0} es: {1} \n\n", cedula, valor_a_pagar);
 
                         break;
 
                     case 3:
                         promedio = epm.Calcular_promedio();
-                        Console.WriteLine("el promedio de consumo actual de energía de todos los clientes es: " + promedio);
+                        Console.WriteLine("el promedio de consumo actual de energía de todos los clientes es: " + promedio + "\n\n");
                         break;
 
                     case 4:
 
                         valor_total_descuento = epm.Calcular_concepto_descuento();
                         Console.WriteLine(" El valor total que se le dio a los clientes por concepto de descuentos es: " 
-                            + valor_total_descuento);
+                            + valor_total_descuento + "\n\n");
                         break;
 
                     case 5:
 
                         Console.WriteLine("los porcentajes por estratos son los siguientes");
                         epm.Calcular_porcentaje_ahorros();
+                        Console.WriteLine("\n\n");
 
                         break;
 
                     case 6:
 
                         contador_clientes = epm.Contar_Clientes_Cobro_Adicional();
-                        Console.WriteLine("El número de clientes que tuvieron cobro adicional es: " + contador_clientes);
+                        Console.WriteLine("El número de clientes que tuvieron cobro adicional es: " + contador_clientes + "\n\n");
 
                         break;
 
